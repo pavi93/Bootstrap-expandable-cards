@@ -1,0 +1,230 @@
+<div class='row dashboard-cards'>
+  <div class='card col-md-4'>
+    <div class='card-title'>
+      <h2>
+        Contact Task
+        <small>You have 14 pending tasks</small>
+      </h2>
+      <div class='task-count'>
+        14
+      </div>
+    </div>
+    <div class='card-flap flap1'>
+      <div class='card-description'>
+        <ul class='task-list'>
+          <li>
+            Sent Question Pending
+            <span>59%</span>
+          </li>
+          <li>
+            Sent Answer Pending
+            <span>11%</span>
+          </li>
+          <li>
+            File Attchment Pending
+            <span>100%</span>
+          </li>
+          <li>
+            Document Send Pending
+            <span>7%</span>
+          </li>
+        </ul>
+      </div>
+      <div class='card-flap flap2'>
+        <div class='card-actions'>
+          <a class='btn' href='#'>Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='card col-md-4'>
+    <div class='card-title'>
+      <h2>
+        Product Task
+        <small>You have 101 pending tasks</small>
+      </h2>
+      <div class='task-count'>
+        101
+      </div>
+    </div>
+    <div class='card-flap flap1'>
+      <div class='card-description'>
+        <ul class='task-list'>
+          <li>
+            Sent Question Pending
+            <span>59%</span>
+          </li>
+          <li>
+            Sent Answer Pending
+            <span>11%</span>
+          </li>
+          <li>
+            File Attchment Pending
+            <span>100%</span>
+          </li>
+          <li>
+            Document Send Pending
+            <span>7%</span>
+          </li>
+        </ul>
+      </div>
+      <div class='card-flap flap2'>
+        <div class='card-actions'>
+          <a class='btn' href='#'>Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='card col-md-4'>
+    <div class='card-title'>
+      <h2>
+        Document Task
+        <small>You have 9 pending tasks</small>
+      </h2>
+      <div class='task-count'>
+        9
+      </div>
+    </div>
+    <div class='card-flap flap1'>
+      <div class='card-description'>
+        <ul class='task-list'>
+          <li>
+            Sent Question Pending
+            <span>59%</span>
+          </li>
+          <li>
+            Sent Answer Pending
+            <span>11%</span>
+          </li>
+          <li>
+            File Attchment Pending
+            <span>100%</span>
+          </li>
+          <li>
+            Document Send Pending
+            <span>7%</span>
+          </li>
+        </ul>
+      </div>
+      <div class='card-flap flap2'>
+        <div class='card-actions'>
+          <a class='btn' href='#'>Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='card col-md-4'>
+    <div class='card-title'>
+      <h2>
+        Contact Task
+        <small>You have 76 pending tasks</small>
+      </h2>
+      <div class='task-count'>
+        76
+      </div>
+    </div>
+    <div class='card-flap flap1'>
+      <div class='card-description'>
+        <ul class='task-list'>
+          <li>
+            Sent Question Pending
+            <span>59%</span>
+          </li>
+          <li>
+            Sent Answer Pending
+            <span>11%</span>
+          </li>
+          <li>
+            File Attchment Pending
+            <span>100%</span>
+          </li>
+          <li>
+            Document Send Pending
+            <span>7%</span>
+          </li>
+        </ul>
+      </div>
+      <div class='card-flap flap2'>
+        <div class='card-actions'>
+          <a class='btn' href='#'>Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='card col-md-4'>
+    <div class='card-title'>
+      <h2>
+        Agreement Task
+        <small>You have 43 pending tasks</small>
+      </h2>
+      <div class='task-count'>
+        43
+      </div>
+    </div>
+    <div class='card-flap flap1'>
+      <div class='card-description'>
+        <ul class='task-list'>
+          <li>
+            Sent Question Pending
+            <span>59%</span>
+          </li>
+          <li>
+            Sent Answer Pending
+            <span>11%</span>
+          </li>
+          <li>
+            File Attchment Pending
+            <span>100%</span>
+          </li>
+          <li>
+            Document Send Pending
+            <span>7%</span>
+          </li>
+        </ul>
+      </div>
+      <div class='card-flap flap2'>
+        <div class='card-actions'>
+          <a class='btn' href='#'>Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='card col-md-4'>
+    <div class='card-title'>
+      <h2>
+        Audit Task
+        <small>You have 24 pending tasks</small>
+      </h2>
+      <div class='task-count'>
+        24
+      </div>
+    </div>
+    <div class='card-flap flap1'>
+      <div class='card-description'>
+        <ul class='task-list'>
+          <li>
+            Sent Question Pending
+            <span>59%</span>
+          </li>
+          <li>
+            Sent Answer Pending
+            <span>11%</span>
+          </li>
+          <li>
+            File Attchment Pending
+            <span>100%</span>
+          </li>
+          <li>
+            Document Send Pending
+            <span>7%</span>
+          </li>
+        </ul>
+      </div>
+      <div class='card-flap flap2'>
+        <div class='card-actions'>
+          <a class='btn' href='#'>Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
