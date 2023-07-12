@@ -1,0 +1,68 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Testimonial</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  </head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a class="first" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Heading-one
+                                <span> </span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <p>Lorem , iaculis ex. Nulla vitae ipsum diam. Pellentesque vitae metus vitae massa egestas posuere. Mauris ultricies vehicula tempor. Pellentesque justo turpis, blandit nec ex eu, tempus placerat diam. Morbi a felis commodo eros consectetur rhoncus sed eget lectus. Praesent non erat vehic</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Heading-Two
+                                <span> </span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <p>Pellentesque justo turpis, blandit nec ex eu, tempus placerat diam. Morbi a felis commodo eros consectetur rhoncus sed eget lectus, posuere massa id, ultricies est. Pellentesque sit amet venenatis est, quis posuere ipsum.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed last" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Heading-Three
+                                <span> </span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            <p>Nulla vitae ipsum diam. Pellentesque vitae metus vitae massa egestas posuere justo turpis, blandit nec ex eu, tempus placerat diam. Morbi a felis commodo eros consectetur rhoncus sed eget lectus. Praesent non erat vehicula, posuere massa id, ultricies est. Pellentesque sit amet venenatis est, quis posuere ipsum.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script type="text/javascript"  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
