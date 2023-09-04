@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- ... other configuration ... -->
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- Use %mdc{key} to include MDC values in the log pattern -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] API [%logger{36}] - RequestBody: %mdc{requestBody}, AuthorizationHeader: %mdc{authorizationHeader} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ... other loggers ... -->
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api")
+public class ApiController {
+    private static final Logger logger = LoggerFactory.getLogger(ApiController.class);
+
+    @PostMapping("/endpoint")
+    public String handleRequest(@RequestBody String requestBody, @RequestHeader("Authorization") String authorizationHeader) {
+        // Capture the request body and headers and set them in the MDC
+        MDC.put("requestBody", requestBody);
+        MDC.put("authorizationHeader", authorizationHeader);
+
+        // Log the API request
+        logger.info("API request received");
+
+        // ... your API logic ...
+
+        // Clear the MDC when done
+        MDC.clear();
+
+        return "Response";
+    }
+}
