@@ -44,3 +44,6 @@ public class ApiController {
         return "Response";
     }
 }
+
+  GET("/{path:^(?!api$).*$}/**"), 
+            request -> ServerResponse.ok().contentType(MediaType.TEXT_HTML).bodyValue("forward:/index.html")
