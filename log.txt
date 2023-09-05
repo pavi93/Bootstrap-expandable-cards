@@ -47,3 +47,39 @@ public class ApiController {
 
   GET("/{path:^(?!api$).*$}/**"), 
             request -> ServerResponse.ok().contentType(MediaType.TEXT_HTML).bodyValue("forward:/index.html")
+			
+			 public RouterFunction<ServerResponse> forwardToIndex() {
+        return RouterFunctions.route()
+            .path("/", builder -> builder
+                .resources("/**", new ClassPathResource("static/"))
+                .nest(accept(MediaType.TEXT_HTML), nestedBuilder -> nestedBuilder
+                    .GET("/", this::forwardToIndexHtml)
+                )
+            )
+            .build();
+    }
+
+    private Mono<ServerResponse> forwardToIndexHtml(ServerRequest request) {
+        return ServerResponse.ok()
+            .contentType(MediaType.TEXT_HTML)
+            .body(BodyInserters.fromResource(new ClassPathResource("static/index.html")));
+    }
+}
+In this configuration:
+
+Static resources are served from the static folder using .resources("/**", new ClassPathResource("static/")).
+Requests for HTML resources are captured and forwarded to the forwardToIndexHtml method, which serves the index.html file using BodyInserters.fromResource(new ClassPathResource("static/index.html")).
+HTML File Location:
+
+Ensure that your index.html file is located in the expected directory, which should be within the resources/static folder.
+
+Base Href:
+
+Double-check that the <base href="/"> tag in your index.html file is correctly set to match the context path where your Angular app is hosted.
+
+With this configuration, client-side routing in your Angular application should work as expected, and deep routes should be properly handled by serving the index.html file.
+
+
+
+
+
