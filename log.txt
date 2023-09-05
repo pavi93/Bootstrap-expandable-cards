@@ -83,3 +83,13 @@ With this configuration, client-side routing in your Angular application should 
 
 
 
+@Configuration
+public class WebFluxConfig implements WebFluxConfigurer {
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/**")
+                .addResourceLocations("classpath:/static/")
+                .setCachePeriod(0); // Disable caching for development, adjust for production
+    }
+}
