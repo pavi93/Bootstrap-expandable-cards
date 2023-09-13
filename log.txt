@@ -93,3 +93,5 @@ public class WebFluxConfig implements WebFluxConfigurer {
                 .setCachePeriod(0); // Disable caching for development, adjust for production
     }
 }
+
+... | eval your_field = replace(your_field, "(abcd|efee|xyz)", "case(match(\1, \"abcd\"), \"author\", match(\1, \"efee\"), \"book\", match(\1, \"xyz\"), \"price\", \1)")
