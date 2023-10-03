@@ -150,3 +150,16 @@ export class HttpService {
     );
   }
 }
+
+
+
+ this.store.dispatch(setAuthToken({ authToken: token }));
+ 
+ 
+ export const myReducer = createReducer(
+  initialState,
+  on(myAction, (state, { myPayload }) => ({
+    ...state,
+    message: myPayload,
+  }))
+);
