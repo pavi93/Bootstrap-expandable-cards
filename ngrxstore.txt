@@ -1,0 +1,152 @@
+// auth.actions.ts
+
+import { createAction, props } from '@ngrx/store';
+
+export const setAuthToken = createAction('[Auth] Set Auth Token', props<{ token: string }>());
+export const clearAuthToken = createAction('[Auth] Clear Auth Token');
+
+
+// auth.reducer.ts
+
+import { createReducer, on } from '@ngrx/store';
+import { setAuthToken, clearAuthToken } from './auth.actions';
+
+export interface AuthState {
+  token: string | null;
+}
+
+export const initialState: AuthState = {
+  token: null,
+};
+
+export const authReducer = createReducer(
+  initialState,
+  on(setAuthToken, (state, { token }) => ({ ...state, token })),
+  on(clearAuthToken, (state) => ({ ...state, token: null }))
+);
+
+// auth.selectors.ts
+
+import { createSelector, createFeatureSelector } from '@ngrx/store';
+import { AuthState } from './auth.reducer';
+
+export const selectAuthState = createFeatureSelector<AuthState>('auth');
+
+export const selectAuthToken = createSelector(
+  selectAuthState,
+  (state) => state.token
+);
+
+// auth.effects.ts
+
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { of } from 'rxjs';
+import { catchError, delay, map, switchMap } from 'rxjs/operators';
+import { clearAuthToken, setAuthToken } from './auth.actions';
+
+@Injectable()
+export class AuthEffects {
+  constructor(private actions$: Actions) {}
+
+  setAuthToken$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(setAuthToken),
+      switchMap((action) => {
+        // Delay for a specified time (e.g., 30 minutes)
+        const tokenExpirationTime = 30 * 60 * 1000; // 30 minutes in milliseconds
+        return of(action).pipe(delay(tokenExpirationTime));
+      }),
+      map(() => clearAuthToken())
+    )
+  );
+}
+
+// app.module.ts
+
+import { NgModule } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { authReducer } from './auth/auth.reducer';
+import { AuthEffects } from './auth/auth.effects';
+
+@NgModule({
+  imports: [
+    // ... other imports ...
+    StoreModule.forRoot({ auth: authReducer }), // Register the auth reducer
+    EffectsModule.forRoot([AuthEffects]), // Register the auth effects
+  ],
+  declarations: [
+    // ... your components ...
+  ],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+
+// auth.service.ts
+
+import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { setAuthToken, clearAuthToken } from './auth/auth.actions';
+import { selectAuthToken } from './auth/auth.selectors';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthService {
+  constructor(private store: Store) {}
+
+  setToken(token: string) {
+    this.store.dispatch(setAuthToken({ token }));
+  }
+
+  clearToken() {
+    this.store.dispatch(clearAuthToken());
+  }
+}
+
+// http.service.ts
+
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { selectAuthToken } from './auth/auth.selectors';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class HttpService {
+  constructor(private http: HttpClient, private store: Store) {}
+
+  private baseUrl = 'https://api.example.com';
+
+  private getHeadersWithToken(): Observable<HttpHeaders> {
+    return this.store.select(selectAuthToken).pipe(
+      map((token) => {
+        const headers = new HttpHeaders({
+          Authorization: `Bearer ${token}`,
+        });
+        return headers;
+      })
+    );
+  }
+
+  // Example GET request with authorization headers
+  getData(): Observable<any> {
+    return this.getHeadersWithToken().pipe(
+      switchMap((headers) =>
+        this.http.get<any>(`${this.baseUrl}/data`, { headers })
+      )
+    );
+  }
+
+  // Example POST request with authorization headers
+  postData(data: any): Observable<any> {
+    return this.getHeadersWithToken().pipe(
+      switchMap((headers) =>
+        this.http.post<any>(`${this.baseUrl}/data`, data, { headers })
+      )
+    );
+  }
+}
