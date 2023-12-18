@@ -1,0 +1,33 @@
+map $env_APP_ENV $app_env_root {
+    default       "/path/to/DEV/public";
+    UAT           "/path/to/UAT/public";
+    PERF          "/path/to/PERF/public";
+    PROD          "/path/to/PROD/public";
+}
+
+server {
+    listen 80;
+    server_name localhost;
+
+    location / {
+        # Log the value of $app_env_root to the error log
+        error_log  /var/log/nginx/app_env.log info;
+
+        # Alternatively, you can include the value in a response header
+        add_header X-App-Env-Root $app_env_root;
+
+        root $app_env_root;
+        index index.html;
+    }
+
+    # Additional configurations...
+
+    # Error pages, etc.
+    error_page 404 /404.html;
+    location = /404.html {
+        root /usr/share/nginx/html;
+        internal;
+    }
+
+    # Additional server blocks and configurations...
+}
